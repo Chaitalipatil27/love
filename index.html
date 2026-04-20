@@ -51,6 +51,18 @@ button {
     from {transform:translateY(0);}
     to {transform:translateY(-100vh);}
 }
+
+/* infinity wave */
+.wave {
+    display: inline-block;
+    animation: wave 1s infinite ease-in-out;
+}
+
+@keyframes wave {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
 </style>
 </head>
 
@@ -72,7 +84,7 @@ let msg = `Initializing love system...
 Searching for someone special...
 
 Name detected: SHARVAY ❤️
-Nickname unlocked: SHARUUUUU ❤️
+Name unlocked: AAHO ❤️
 
 Access granted...
 
@@ -94,10 +106,11 @@ function reveal() {
         "My Sharuuuuu ❤️<br><br>" +
         "if (you == my_world) {<br>" +
         "&nbsp;&nbsp;my_heart = yours;<br>" +
-        "&nbsp;&nbsp;love_for_you = infinite;<br>" +
+        "&nbsp;&nbsp;love_for_you = infinite <span class='wave'>∞</span>;<br>" +
         "}<br><br>" +
-        "From 'Sharvay' to 'Sharuuuuu'… you became my everything 💖<br><br>" +
-        "In every life, in every code, I choose YOU ❤️";
+        "From 'Sharvay' to 'Aaho'… every version of you is my favorite forever ❤️<br><br>" +
+        "I fall in love with you more and more, every single day ❤️<br>" +
+        "I love you bal 💕";
 
     document.getElementById("music").play();
 
