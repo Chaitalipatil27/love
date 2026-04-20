@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Sharuuuuu ❤️</title>
+
+<style>
+body {
+    margin:0;
+    background:black;
+    color:#00ffcc;
+    font-family:monospace;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+}
+
+#text {
+    font-size:18px;
+    white-space:pre-line;
+}
+
+#final {
+    display:none;
+    margin-top:20px;
+    font-size:20px;
+    color:white;
+}
+
+button {
+    margin-top:20px;
+    padding:10px 20px;
+    border:none;
+    background:#00ffcc;
+    color:black;
+    font-weight:bold;
+    border-radius:5px;
+}
+
+/* hearts */
+.heart {
+    position:fixed;
+    bottom:-10px;
+    color:red;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    from {transform:translateY(0);}
+    to {transform:translateY(-100vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div>
+    <div id="text"></div>
+    <button onclick="reveal()">Click me Sharuuuuu ❤️</button>
+    <div id="final"></div>
+</div>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let msg = `Initializing love system...
+
+Searching for someone special...
+
+Name detected: SHARVAY ❤️
+Nickname unlocked: SHARUUUUU ❤️
+
+Access granted...
+
+Loading my feelings...`;
+
+let i = 0;
+function type() {
+    if(i < msg.length) {
+        document.getElementById("text").innerHTML += msg.charAt(i);
+        i++;
+        setTimeout(type, 50);
+    }
+}
+type();
+
+function reveal() {
+    document.getElementById("final").style.display = "block";
+    document.getElementById("final").innerHTML =
+        "My Sharuuuuu ❤️<br><br>" +
+        "if (you == my_world) {<br>" +
+        "&nbsp;&nbsp;my_heart = yours;<br>" +
+        "&nbsp;&nbsp;love_for_you = infinite;<br>" +
+        "}<br><br>" +
+        "From 'Sharvay' to 'Sharuuuuu'… you became my everything 💖<br><br>" +
+        "In every life, in every code, I choose YOU ❤️";
+
+    document.getElementById("music").play();
+
+    // floating hearts
+    setInterval(() => {
+        let h = document.createElement("div");
+        h.className = "heart";
+        h.innerHTML = "❤️";
+        h.style.left = Math.random()*100 + "vw";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),5000);
+    },300);
+}
+</script>
+
+</body>
+</html>
