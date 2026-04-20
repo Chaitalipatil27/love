@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+[1:49 pm, 20/04/2026] Chaitali Patil: <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +17,12 @@ body {
     text-align:center;
 }
 
+/* bring text to front */
+#text, #final, button {
+    position: relative;
+    z-index: 1;
+}
+
 #text {
     font-size:18px;
     white-space:pre-line;
@@ -27,6 +33,7 @@ body {
     margin-top:20px;
     font-size:20px;
     color:white;
+    text-shadow: 0 0 10px pink;
 }
 
 button {
@@ -39,12 +46,14 @@ button {
     border-radius:5px;
 }
 
-/* hearts */
+/* hearts in background */
 .heart {
     position:fixed;
     bottom:-10px;
     color:red;
     animation: float 5s linear infinite;
+    z-index: 0;
+    opacity: 0.6;
 }
 
 @keyframes float {
@@ -52,7 +61,7 @@ button {
     to {transform:translateY(-100vh);}
 }
 
-/* infinity wave */
+/* infinity animation */
 .wave {
     display: inline-block;
     animation: wave 1s infinite ease-in-out;
@@ -84,7 +93,7 @@ let msg = `Initializing love system...
 Searching for someone special...
 
 Name detected: SHARVAY ❤️
-Name unlocked: AAHO ❤️
+Nickname unlocked: AAHO ❤️
 
 Access granted...
 
@@ -114,7 +123,7 @@ function reveal() {
 
     document.getElementById("music").play();
 
-    // floating hearts
+    // floating hearts (background)
     setInterval(() => {
         let h = document.createElement("div");
         h.className = "heart";
@@ -124,6 +133,202 @@ function reveal() {
         setTimeout(()=>h.remove(),5000);
     },300);
 }
+</script>
+
+</body>
+</html>
+[1:54 pm, 20/04/2026] Chaitali Patil: <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Sharuuuuu ❤️</title>
+
+<style>
+body {
+    margin:0;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #ff6ec7);
+    font-family:monospace;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    overflow:hidden;
+    position:relative;
+    color:#00ffcc;
+}
+
+/* BACKGROUND LAYER */
+#bg {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+/* TEXT LAYER (FRONT) */
+#text, #final, button {
+    position: relative;
+    z-index: 10;
+}
+
+#text {
+    font-size:18px;
+    white-space:pre-line;
+}
+
+#final {
+    display:none;
+    margin-top:20px;
+    font-size:20px;
+    color:white;
+    text-shadow: 0 0 10px pink;
+}
+
+button {
+    margin-top:20px;
+    padding:10px 20px;
+    border:none;
+    background:#00ffcc;
+    color:black;
+    font-weight:bold;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+/* HEARTS */
+.heart {
+    position: absolute;
+    bottom:-20px;
+    color:red;
+    animation: floatUp 6s linear forwards;
+    opacity:0.7;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0) scale(1); opacity:1; }
+    to { transform: translateY(-110vh) scale(1.5); opacity:0; }
+}
+
+/* SPARKLES */
+.sparkle {
+    position:fixed;
+    width:6px;
+    height:6px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 10px white, 0 0 20px pink;
+    animation: twinkle 3s infinite;
+    z-index:1;
+}
+
+@keyframes twinkle {
+    0% {opacity:0;}
+    50% {opacity:1;}
+    100% {opacity:0;}
+}
+
+/* wave infinity */
+.wave {
+    display:inline-block;
+    animation: wave 1s infinite ease-in-out;
+}
+
+@keyframes wave {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND CONTAINER -->
+<div id="bg"></div>
+
+<div>
+    <div id="text"></div>
+    <button onclick="reveal()">Click me Sharuuuuu ❤️</button>
+    <div id="final"></div>
+</div>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+let msg = `Initializing love system...
+
+Searching for someone special...
+
+Name detected: SHARVAY ❤️
+Name unlocked: AAHO ❤️
+
+Access granted...
+
+Loading my feelings...`;
+
+let i = 0;
+function type() {
+    if(i < msg.length) {
+        document.getElementById("text").innerHTML += msg.charAt(i);
+        i++;
+        setTimeout(type, 50);
+    }
+}
+type();
+
+/* 💖 CREATE HEART IN BACKGROUND */
+function createHeart() {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤️";
+
+    h.style.left = Math.random() * 100 + "vw";
+    h.style.fontSize = (10 + Math.random() * 25) + "px";
+    h.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+    document.getElementById("bg").appendChild(h);
+
+    setTimeout(() => {
+        h.remove();
+    }, 6000);
+}
+
+/* ✨ SPARKLES */
+function createSparkle() {
+    let s = document.createElement("div");
+    s.className = "sparkle";
+    s.style.left = Math.random()*100 + "vw";
+    s.style.top = Math.random()*100 + "vh";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),3000);
+}
+
+function reveal() {
+    document.getElementById("final").style.display = "block";
+    document.getElementById("final").innerHTML =
+        "My Sharuuuuu ❤️<br><br>" +
+        "if (you == my_world) {<br>" +
+        "&nbsp;&nbsp;my_heart = yours;<br>" +
+        "&nbsp;&nbsp;love_for_you = infinite <span class='wave'>∞</span>;<br>" +
+        "}<br><br>" +
+        "From 'Sharvay' to 'Aaho'… every version of you is my favorite forever ❤️<br><br>" +
+        "I fall in love with you more and more, every single day ❤️<br>" +
+        "I love you bal 💕";
+
+    document.getElementById("music").play();
+
+    setInterval(createHeart, 200);
+    setInterval(createSparkle, 200);
+}
+
 </script>
 
 </body>
